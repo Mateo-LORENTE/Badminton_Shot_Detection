@@ -1,0 +1,3 @@
+[submodule "TrackNetv2"]
+	path = TrackNetv2
+	url = https://nol.cs.nctu.edu.tw:234/open-source/TrackNetv2.git

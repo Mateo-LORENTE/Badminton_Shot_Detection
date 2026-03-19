@@ -1,0 +1,14 @@
+moviepy==1.0.3
+opencv-python-headless
+keras
+tensorflow
+scikit-image  
+keras
+XlsxWriter 
+matplotlib 
+scenedetect 
+piexif
+librosa
+tqdm
+pandas
+numpy

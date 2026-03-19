@@ -1,0 +1,65 @@
+stages:
+  - build
+  - deploy
+
+Build:
+  # rules:
+  #   - if:
+  #     changes:
+  #     - Dockerfile
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  stage: build
+  tags:
+    - IRMES-DATA-BUILD
+  before_script:
+    - docker info
+    - echo -n $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+  script:
+    - docker pull $CI_REGISTRY_IMAGE:latest || true
+    - >
+      docker build
+      --pull
+      --build-arg http_proxy=$http_proxy
+      --build-arg https_proxy=$https_proxy
+      --build-arg no_proxy=$no_proxy
+      --label "org.opencontainers.image.title=$CI_PROJECT_TITLE"
+      --label "org.opencontainers.image.url=$CI_PROJECT_URL"
+      --label "org.opencontainers.image.created=$CI_JOB_STARTED_AT"
+      --label "org.opencontainers.image.revision=$CI_COMMIT_SHA"
+      --label "org.opencontainers.image.version=$CI_COMMIT_REF_NAME"
+      --label "io.portainer.accesscontrol.teams=ffbadminton"
+      --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+      --tag $CI_REGISTRY_IMAGE:latest
+      .
+    - docker push $CI_REGISTRY_IMAGE --all-tags
+
+deploy:
+  only:
+    - pushes
+  stage: deploy
+  tags:
+    - IRMES-COMPUTE-SHELL
+  before_script:
+    - echo -n $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+    - docker stop $CI_PROJECT_NAME || true
+    - docker rm $CI_PROJECT_NAME || true
+    - docker pull $CI_REGISTRY_IMAGE:latest
+  script:
+    - docker run --name $CI_PROJECT_NAME-$(date +%s) -d --gpus all --runtime=nvidia  --shm-size=32g -e INPUT_PATH=/app/docker_inputs -e OUTPUT_PATH=/app/docker_predictions -v /data/videos/ffbadminton/predictions/scripts/:/app/scripts -v /data/videos/ffbadminton/predictions/inputs_tracking_test_2:/app/docker_inputs -v /data/videos/ffbadminton/predictions/outputs_tracking_test:/app/docker_predictions $CI_REGISTRY_IMAGE:latest
+    #- docker run --name $CI_PROJECT_NAME-$(date +%s) \
+        # -d --gpus all --runtime=nvidia --shm-size=32g \
+        # -v /data/videos/ffbadminton/predictions/scripts/:/app/scripts \
+        # -v /data/videos/ffbadminton/predictions/inputs_tracking_old:/data/videos/ffbadminton/predictions/inputs_tracking_old \
+        # -v /data/videos/ffbadminton/predictions/inputs_tracking_old_sons:/data/videos/ffbadminton/predictions/inputs_tracking_old_sons \
+        # -v /data/videos/ffbadminton/predictions/hitnet_inputs:/data/videos/ffbadminton/predictions/hitnet_inputs \
+        # -v /data/videos/ffbadminton/predictions/inputs_tracking_old_spectres:/data/videos/ffbadminton/predictions/inputs_tracking_old_spectres \
+        # -v /data/videos/ffbadminton/predictions/inputs_tracking_old_features:/data/videos/ffbadminton/predictions/inputs_tracking_old_features \
+        # $CI_REGISTRY_IMAGE:latest \
+        # python3 archi_sons.py \
+        #   --inputs_video=/data/videos/ffbadminton/predictions/inputs_tracking_old \
+        #   --inputs_sons=/data/videos/ffbadminton/predictions/inputs_tracking_old_sons \
+        #   --input_csv=/data/videos/ffbadminton/predictions/hitnet_inputs \
+        #   --outouts_spec=/data/videos/ffbadminton/predictions/inputs_tracking_old_spectres \
+        #   --outputs_feat=/data/videos/ffbadminton/predictions/inputs_tracking_old_features
