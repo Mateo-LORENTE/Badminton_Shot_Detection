@@ -143,7 +143,7 @@ Here are the detailed sub-modules:
 After running the **BadTrackNet** pipeline, an annotated video is generated. It shows:
 - Shuttlecock trajectory detected by **TrackNetV2**
 - Hits detected for top/bottom player<video width="600" controls>
-  <source src="https://drive.google.com/uc?export=download&id=ID_DU_FICHIER" type="video/mp4">
+  <source src="https://drive.google.com/uc?export=download&id=1L1aErnqwvM-6_neoT7QwRF12HyxgjikC" type="video/mp4">
   Ton navigateur ne supporte pas la balise vidéo.
 </video>
 
