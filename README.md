@@ -138,6 +138,10 @@ Here are the detailed sub-modules:
 - **Bloc trajectoire**  
   ![Trajectory pipeline](docs/img/pipeline_traj.png)
 
+## Pipeline result
+
+Here is an exemple of the output with a video taken on youtube : 
+
 ## 📎 Notes
 
 - The system is sensitive to the camera angle: it automatically detects scenes with a standard angle.
