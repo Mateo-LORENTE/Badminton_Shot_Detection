@@ -1,13 +1,13 @@
-# 🏸 BadTrackNet - Analyse vidéo intelligente de matchs de badminton
+🏸 **BadTrackNet – Intelligent Video Analysis of Badminton Matches**
 
-Ce projet est une pipeline complète pour l’analyse automatique de matchs de **badminton** à partir de vidéos, en utilisant l’intelligence artificielle pour :
-- détecter le volant image par image,
-- analyser le spectre sonore,
-- détecter les frappes (strikes),
-- prédire qui frappe (top ou bottom),
-- annoter automatiquement la vidéo.
+This project is a complete pipeline for the automatic analysis of **badminton** matches from video, using artificial intelligence to:
+- detect the shuttlecock frame by frame,
+- analyze the audio spectrum,
+- detect hits (strikes),
+- predict who is hitting (top or bottom player),
+- automatically annotate the video.
 
-Il combine le modèle **TrackNetV2** pour le tracking du volant avec des modèles de **computer vision** créer et entrainer sur mesure pour l'analyse des spectres audio, ainsi qu’un pipeline de traitement audio avancé.
+It combines the **TrackNetV2** model for shuttlecock tracking with custom-built and trained **computer vision** models for audio spectrum analysis, along with an advanced audio processing pipeline.
 
 ## 📁 Structure du projet
 
@@ -15,17 +15,17 @@ Il combine le modèle **TrackNetV2** pour le tracking du volant avec des modèle
 FFBADMINTON
 
 ffbadminton/
-│── README.md                # présentation du projet
-│── requirements.txt         # dépendances Python
-│── .gitignore               # fichiers à ignorer par git
+│── README.md                # project presentation
+│── requirements.txt         # Python dependencies
+│── .gitignore              
 │── .gitlab-ci.yml           # CI/CD
 │
-├── 0_ARCHIVE/               # Travail des stagiaires précendents 
+├── 0_ARCHIVE/               # Work of previous interns
 │
-├── 1_FFBAD/                 # code source principal
+├── 1_FFBAD/                 # main source code
 │   ├── __init__.py
-│   └── inference/           # scripts pour l’inférence
-│       ├── complete_tracking_TrackNetV2.py     # Pipeline principale 
+│   └── inference/           # scripts for inference
+│       ├── complete_tracking_TrackNetV2.py     # Main pipeline 
 │       ├── extract_sons_pipeline.py
 │       ├── camera_change.py
 │       ├── extract_trajectoire.py
@@ -37,9 +37,9 @@ ffbadminton/
 │               └── predict3.py
 │   
 │   
-├── 2_vidIN/                # dir de input video
+├── 2_vidIN/                # dir input video
 │   
-├── 2_vidOUT/               # dir de output
+├── 2_vidOUT/               # dir output
 
 ```
 
@@ -48,77 +48,75 @@ ffbadminton/
 - Python 3.9+
 - PyTorch & TensorFlow (modèles deep learning)
 - OpenCV, librosa, scikit-learn, pandas, matplotlib
-- TrackNetV2 (détection du volant)
-- moviepy (extraction audio)
-- CNN + RNN pour la classification des frappes
+- TrackNetV2 (shuttlecock detection)
+- moviepy (audio extraction)
+- CNN + RNN
 
-## 🔧 Installation et création environnement virtuel python
+## 🔧 Installation and creation of a Python virtual environment
 
-Création de l'environnement virtuel python
+Create the Python virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activation de l'environnement 
+Environment activation
 
 ```bash
 .venv\Scripts\Activate.ps1
 ```
 
-Installe les dépendances nécessaires :
+Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> **Note :** Certains packages comme `librosa`, `tensorflow`, `torch`, `opencv-python` sont essentiels.
 
-## 🚀 Exécution du script principal
+## 🚀 Running the main script
 
-### Depuis une vidéo locale :
+### From a local video:
 
 ```bash
 python complete_tracking_TrackNetV2.py \
-  --inputs_path /chemin/2_vidIN/nomVID.mp4 \
-  --outputs_path /chemin/2_vidOUT
+  --inputs_path /path/to/2_vidIN/videoNAME.mp4 \
+  --outputs_path /path/to/2_vidOUT
 ```
 
+The script :
+1. Downloads the video if needed
+2. Generates a reference frame
+3. Applies TrackNetV2 on valid scenes
+4. Extracts audio signals
+5. Extracts features and audio spectrograms
+6. Applies CNN and GRU models
+7. Detects hits (strikes)
+8. Saves the results and an annotated video
 
-Le script :
-1. Télécharge la vidéo si besoin
-2. Génére une image de référence
-3. Applique TrackNetV2 sur les scènes valides
-4. Extrait les signaux audio
-5. Extrait les features et spectrogrammes sonores
-6. Applique les modèles CNN et GRU
-7. Détection des frappes
-8. Sauvegarde les résultats et une vidéo annotée
+## 📦 Main components
 
-## 📦 Composants principaux
+- `complete_tracking_TrackNetV2.py`:
+  - Script entry point
+  - Handles videos and the TrackNet model
+  - Predictions using shuttlecock trajectories and audio peak classification
+  - Fusion of predictions
+  - Final video annotation
 
-- `complete_tracking_TrackNetV2.py` :
-  - Point d’entrée du script
-  - Gestion des vidéos, du modèle TrackNet
-  - prédictions via trajectoires du volant, et via classification des pics sonores.
-  - fusion des prédictions
-  - Annotation finale sur la vidéo
+- `extract_sons_pipeline.py`:
+  - Audio extraction, signal processing, and audio peak detection
+  - Extraction of audio features (ZCR, MFCC, spectral flux, spectrogram, etc.)
 
-- `extract_sons_pipeline.py` :
-  - Extraction audio, traitement du signal, détection des pics sonores
-  - Extraction des features audio (ZCR, MFCC, flux spectral, spectrogramme, etc..)
+- `extract_trajectoire.py`:
+  - Preprocessing and interpolation of shuttlecock trajectories
+  - Formatting for the sequential model (CNN1D + GRU)
 
-- `extract_trajectoire.py` :
-  - Prétraitement et interpolation des trajectoires du volant
-  - Formatage pour le modèle séquentielle (CNN1D + GRU)
+## ✅ Generated results
 
-## ✅ Résultats générés
+- `*_predict.mp4`: video with shuttlecock tracking points
+- `*_annotated.mp4`: video annotated with hits (top / bottom) + shuttlecock trajectories
+- `*_df_predict.pkl`: DataFrame of hit predictions
 
-- `*_predict.mp4` : vidéo avec les points de tracking du volant
-- `*_annotated.mp4` : vidéo annotée avec les frappes (top / bottom) + trajectoires du volant
-- `*_df_predict.pkl` : DataFrame des prédiction de frappe.
-
-## 📊 Modèles utilisés
+## 📊 Models used
 
 | Composant        | Modèle                        | Emplacement                             |
 |------------------|-------------------------------|-----------------------------------------|
@@ -126,28 +124,28 @@ Le script :
 | Détection frappe | CNN + features audio (PyTorch)| `strike_cnn_feat_new.pt`                |
 | Type de frappe   | GRU + trajectoires (Keras)    | `modele_que_volant_CNN0.h5`             |
 
-## 🖼️ Schéma de la pipeline
+## 🖼️ Pipeline diagram
 
-Voici un aperçu visuel de la pipeline complète :
+Here is a visual overview of the complete pipeline:
 
-![Pipeline globale](docs/img/pipeline_global.png)
+![Global pipeline](docs/img/pipeline_global.png)
 
-Si nécessaire, voici aussi les sous-modules détaillés :
+Here are the detailed sub-modules:
 
 - **Bloc audio**  
-  ![Pipeline audio](docs/img/pipeline_audio.png)
+  ![Audio Pipeline](docs/img/pipeline_audio.png)
 
 - **Bloc trajectoire**  
-  ![Pipeline trajectoires](docs/img/pipeline_traj.png)
+  ![Trajectory pipeline](docs/img/pipeline_traj.png)
 
-## 📎 Remarques
+## 📎 Notes
 
-- Le système est sensible à l’angle de caméra : il détecte automatiquement les scènes avec un angle classique.
-- La vidéo doit comporter une piste audio.
-- Les modèles sont à placer aux chemins spécifiés ou à adapter dans le code.
-- La video doit faire au moins 3 min de temps de jeu effectif.
+- The system is sensitive to the camera angle: it automatically detects scenes with a standard angle.
+- The video must include an audio track.
+- Models should be placed at the specified paths or adapted in the code.
+- The video should be at least 3 minutes of actual gameplay.
 
-## 🙌 Crédits
+## 🙌 Credits
 
-Développé par Mateo LORENTE et Rehyann BOUTEILLER
-Utilise TrackNetV2 : https://github.com/cehsan/TrackNetV2
+Developed by Mateo LORENTE and Rehyann BOUTEILLER  
+Uses TrackNetV2: https://github.com/cehsan/TrackNetV2
