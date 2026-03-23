@@ -143,14 +143,7 @@ Here are the detailed sub-modules:
 After running the **BadTrackNet** pipeline, an annotated video is generated. It shows:
 - Shuttlecock trajectory detected by **TrackNetV2**
 - Hits detected for top/bottom player
-
-<div align="center">
-  <video width="720" height="400" controls>
-    <source src="https://mateo-lorente.github.io/Badminton_Shot_Detection/2_vidOUT/demo-detection-strike.mp4" type="video/mp4">
-    Your browser does not support video playback.
-  </video>
-</div>
-
+https://github.com/user-attachments/assets/bc95a7cd-5432-4643-b930-1be8fdfd55cb
 This video demonstrates shuttlecock tracking and automatic hit annotation.
 
 ## 📎 Notes
