@@ -110,7 +110,7 @@ Le script :
 
 - `extract_trajectoire.py` :
   - Prétraitement et interpolation des trajectoires du volant
-  - Formatage pour le modèle GRU
+  - Formatage pour le modèle séquentielle (CNN1D + GRU)
 
 ## ✅ Résultats générés
 
