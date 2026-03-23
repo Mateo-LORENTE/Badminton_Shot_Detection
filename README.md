@@ -144,7 +144,7 @@ After running the **BadTrackNet** pipeline, an annotated video is generated. It 
 - Shuttlecock trajectory detected by **TrackNetV2**
 - Hits detected for top/bottom player
 
-<img width="794" height="323" alt="Image" src="https://github.com/user-attachments/assets/f887b973-5b4b-46ee-b225-6b30f9cba5f0" />
+https://github.com/user-attachments/assets/049e110e-6084-47cb-baed-20d33bb0c1ea
 
 This video demonstrates shuttlecock tracking and automatic hit annotation.
 
