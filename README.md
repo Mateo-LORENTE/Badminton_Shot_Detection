@@ -146,7 +146,7 @@ After running the **BadTrackNet** pipeline, an annotated video is generated. It 
 
 <div align="center">
   <video width="720" height="400" controls>
-    <source src="2_vidOUT/demo-detection-strike.mp4" type="video/mp4">
+    <source src="2_vidOUT/Démo_Détection_frappe.mp4" type="video/mp4">
     Your browser does not support video playback.
   </video>
 </div>
