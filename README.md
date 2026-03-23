@@ -2,6 +2,7 @@
 
 Ce projet est une pipeline complète pour l’analyse automatique de matchs de **badminton** à partir de vidéos, en utilisant l’intelligence artificielle pour :
 - détecter le volant image par image,
+- analyser le spectre sonore,
 - détecter les frappes (strikes),
 - prédire le type de frappe (top ou bottom),
 - annoter automatiquement la vidéo.
