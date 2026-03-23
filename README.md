@@ -6,7 +6,7 @@ Ce projet est une pipeline complète pour l’analyse automatique de matchs de *
 - prédire le type de frappe (top ou bottom),
 - annoter automatiquement la vidéo.
 
-Il combine le modèle **TrackNetV2** pour le tracking du volant avec des modèles audio et trajectoires personnalisés, ainsi qu’un pipeline de traitement audio avancé.
+Il combine le modèle **TrackNetV2** pour le tracking du volant avec des modèles de **computer vision** créer et entrainer sur mesure pour l'analyse des spectres audio, ainsi qu’un pipeline de traitement audio avancé.
 
 ## 📁 Structure du projet
 
