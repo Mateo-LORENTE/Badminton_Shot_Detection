@@ -90,9 +90,10 @@ Le script :
 2. Génére une image de référence
 3. Applique TrackNetV2 sur les scènes valides
 4. Extrait les signaux audio
-5. Génère les features et spectrogrammes
+5. Extrait les features et spectrogrammes sonores
 6. Applique les modèles CNN et GRU
-7. Sauvegarde les résultats et une vidéo annotée
+7. Détection des frappes
+8. Sauvegarde les résultats et une vidéo annotée
 
 ## 📦 Composants principaux
 
