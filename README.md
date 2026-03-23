@@ -1,5 +1,8 @@
 🏸 **BadTrackNet – Intelligent Video Analysis of Badminton Matches**
 
+![shot detection](https://github.com/user-attachments/assets/35d606fb-780e-459e-9361-537e1dbab50b)
+
+
 This project is a complete pipeline for the automatic analysis of **badminton** matches from video, using artificial intelligence to:
 - detect the shuttlecock frame by frame,
 - analyze the audio spectrum,
