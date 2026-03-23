@@ -143,15 +143,9 @@ Here are the detailed sub-modules:
 After running the **BadTrackNet** pipeline, an annotated video is generated. It shows:
 - Shuttlecock trajectory detected by **TrackNetV2**
 - Hits detected for top/bottom player
+You can watch the annotated video [here](2_vidOUT/demo-detection-strike.mp4).
 
-<div align="center">
-  <video width="720" height="400" controls>
-    <source src="2_vidOUT/demo-detection-strike.mp4" type="video/mp4">
-    Your browser does not support video playback.
-  </video>
-</div>
-
-> This video demonstrates shuttlecock tracking and automatic hit annotation.
+This video demonstrates shuttlecock tracking and automatic hit annotation.
 
 ## 📎 Notes
 
