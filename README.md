@@ -146,6 +146,14 @@ After running the **BadTrackNet** pipeline, an annotated video is generated. It 
 
 
 
+
+
+
+https://github.com/user-attachments/assets/e5f743fd-15d1-4703-a1c9-9e5870ff0b42
+
+
+
+
 This video demonstrates shuttlecock tracking and automatic hit annotation.
 
 ## 📎 Notes
