@@ -138,9 +138,20 @@ Here are the detailed sub-modules:
 - **Bloc trajectoire**  
   ![Trajectory pipeline](docs/img/pipeline_traj.png)
 
-## Pipeline result
+## 🏸 Example Annotated Video
 
-Here is an exemple of the output with a video taken on youtube : 
+After running the **BadTrackNet** pipeline, an annotated video is generated. It shows:
+- Shuttlecock trajectory detected by **TrackNetV2**
+- Hits detected for top/bottom player
+
+<div align="center">
+  <video width="720" height="400" controls>
+    <source src="2_vidOUT/demo-detection-strike.mp4" type="video/mp4">
+    Your browser does not support video playback.
+  </video>
+</div>
+
+> This video demonstrates shuttlecock tracking and automatic hit annotation.
 
 ## 📎 Notes
 
