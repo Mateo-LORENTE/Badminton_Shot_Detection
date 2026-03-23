@@ -1,4 +1,4 @@
-🏸 **BadTrackNet – Intelligent Video Analysis of Badminton Matches**
+🏸 **Intelligent Video Analysis of Badminton Matches**
 
 ![shot detection](https://github.com/user-attachments/assets/35d606fb-780e-459e-9361-537e1dbab50b)
 
@@ -143,13 +143,22 @@ Here are the detailed sub-modules:
 
 ## 🏸 Example Annotated Video
 
-After running the **BadTrackNet** pipeline, an annotated video is generated. It shows:
+After running the pipeline, an annotated video is generated. It shows:
 - Shuttlecock trajectory detected by **TrackNetV2**
-- Hits detected for top/bottom player
+- Hits detected for top/bottom player green circle for bottom player and blue for top player
 
 https://github.com/user-attachments/assets/a1b15e35-4203-48c5-bae7-ce5d45afe86b
 
-This video demonstrates shuttlecock tracking and automatic hit annotation.
+This video demonstrates shuttlecock tracking with reliable automatic hit annotation.
+
+### 📊 Performance on Test Set
+
+On the test dataset ~1000 strokes, the pipeline achieves:
+
+- **Precision:** 0.91  
+- **Recall:** 0.82  
+
+These metrics correspond to the **hit detection** module, demonstrating reliable performance in identifying shuttlecock strikes for both top and bottom players.
 
 ## 📎 Notes
 
