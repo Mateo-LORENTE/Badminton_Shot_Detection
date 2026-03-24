@@ -149,7 +149,7 @@ After running the pipeline, an annotated video is generated. It shows:
 
 https://github.com/user-attachments/assets/a1b15e35-4203-48c5-bae7-ce5d45afe86b
 
-If it does not load, click [Here](2_vidOUT/demo-detection-strike.mp4) to download.
+If it doesn't load, click [Here](2_vidOUT/demo-detection-strike.mp4) to access the file.
 
 This video demonstrates shuttlecock tracking with reliable automatic hit annotation.
 
