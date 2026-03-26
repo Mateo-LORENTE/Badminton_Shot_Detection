@@ -10,7 +10,8 @@ This project is a complete pipeline for the automatic analysis of **badminton** 
 - predict who is hitting (top or bottom player),
 - automatically annotate the video.
 
-It combines the **TrackNetV2** model for shuttlecock tracking with custom-built and trained **computer vision** models for audio spectrum analysis, along with an advanced audio processing pipeline.
+It combines the **TrackNetV2** model for shuttlecock tracking with custom-built and trained **computer vision** models for audio spectrum analysis, along with an advanced audio processing pipeline. 
+It gathers shottlecok tracking and audio analysis to detect strokes.
 
 ## 📁 Structure du projet
 
