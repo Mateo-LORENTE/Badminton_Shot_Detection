@@ -1,6 +1,6 @@
 🏸 **Automatic Detection of Strokes in Badminton Match Videos**
 
-![shot detection](https://github.com/user-attachments/assets/35d606fb-780e-459e-9361-537e1dbab50b)
+![shot detection](docs/img/demo.gif)
 
 
 This project is a complete pipeline for the automatic analysis of **badminton** matches from video, using artificial intelligence to:
