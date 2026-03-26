@@ -148,9 +148,9 @@ After running the pipeline, an annotated video is generated. It shows:
 - Shuttlecock trajectory detected by **TrackNetV2**
 - Hits detected for top/bottom player green circle for bottom player and blue for top player
 
-https://github.com/user-attachments/assets/a1b15e35-4203-48c5-bae7-ce5d45afe86b
+![shot detection](docs/img/demo.gif)
 
-If it doesn't load, click [Here](2_vidOUT/demo-detection-strike.mp4) to access the file.
+Click [Here](2_vidOUT/demo-detection-strike.mp4) to access the full video.
 
 This video demonstrates shuttlecock tracking with reliable automatic hit annotation.
 
