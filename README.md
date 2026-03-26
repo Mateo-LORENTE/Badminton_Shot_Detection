@@ -147,6 +147,7 @@ Here are the detailed sub-modules:
 After running the pipeline, an annotated video is generated. It shows:
 - Shuttlecock trajectory detected by **TrackNetV2**
 - Hits detected for top/bottom player green circle for bottom player and blue for top player
+- In the top-left corner, frame by frame, the probabilities predicted by the model for a stroke occurring
 
 ![shot detection](docs/img/demo.gif)
 
